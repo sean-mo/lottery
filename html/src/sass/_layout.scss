@@ -1,0 +1,18 @@
+@charset "UTF-8";
+//-----------------------------------------------------	
+// function scss
+// 提供所有基础页面布局模块
+// 默认不会解析出任何样式
+//-----------------------------------------------------
+
+
+
+// 导入所有功能类相关文件
+//-----------------------------------------------------
+
+ html       { font-size: $baseFontSize/16*100%; }    
+ html, body { background: #008FDE; @include size(100%, 100%); }
+
+
+@include animate-bounceInDown;
+ .pageHeader { @include size-rem(100%, 285); @include box-shadow(#008FDE 0 1px 1px); background-position: center center; background-repeat: no-repeat; background-color: #24A6F1; background-image: url(images/fast.jpg);  background-size: 84% 93%; @extend .bounceInDown; }

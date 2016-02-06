@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name='apple-touch-fullscreen' content='yes'>
+	<meta name="format-detection" content="telephone=no"/>  
+	<title>抽奖页面</title>
+	<meta name="description" content="抽奖页面" />
+    <meta name="keywords" content="抽奖页面" />
+	<style>
+		@@include('../../css/style.min.css')	
+	</style>
+</head>
+<body> 
+<header class="pageHeader"></header>
+<section class="lottery-section">
+	<p class="lottery-disc" id="lotteryDisc"></p>
+	<p class="lottery-start" id="lotteryStart"></p>
+	<p class="lottery-num">每天至少一次抽奖，您还有<ins id="lotNum">3</ins>次机会</p>
+	<p class="lottery-notify">
+		<span>今天152****5696 抽到UC世界杯公仔</span>
+		<span>今天152****5696 抽到UC精美水壶</span>
+		<span>今天152****5696 抽到《后会无期》电影票</span>
+		<span>今天152****5696 抽到小米3</span>
+		<span>今天152****5696 抽到流量包100M</span>
+	</p>
+	<p class="lottery-share"><a href="javascript:void(0);">分享</a></p>
+</section>
+<section class="lottery-me lottery-box">
+	<h3>我的奖品 <ins></ins></h3>
+	<dl class="lottery-list">
+		<dt><span>奖品名称</span><span>中奖时间</span></dt>
+		<dd><span>UC精美水壶</span><span>2014.06.18</span></dd>
+		<dd><span>流量包100M</span><span>2014.06.20</span></dd>
+	</dl>
+</section>
+<section class="lottery-rule lottery-box">
+	<h3>活动规则 <ins></ins></h3>
+	<header>抽奖条件</header>
+	<ul class="lottery-rule-list">
+		<li>关注有奖：关注【UC浏览器】官方微信订阅号，
+发送关键字“人品测试”，每天获得至少一次
+大转盘抽奖机会。</li>
+		<li>参与UC浏览器客户端互动，获得专属抽奖码，抽
+		奖机会可翻倍增加（详情请留意微信活动告知）</li>
+	</ul>
+	<header>活动时间</header>
+	<ul class="lottery-rule-list">
+		<li>可预见的未来每天，直至所有奖品送完为止。</li>
+	</ul>
+	<header>奖品介绍</header>
+	<ul class="lottery-rule-list">
+		<li>海信VIDAA2 智能电视1台</li>
+		<li>UC水壶共50个</li>
+		<li>《老男孩猛龙过江》电影票共50张</li>
+		<li>10元话费共50份</li>
+		<li>电信流量包100M共1万份</li>
+		<li>再抽一次的机会</li>
+	</ul>
+	<p>
+		<b></b>
+		本活动最终解释权在法律允许的范围内归UC优视所有。如
+		遇不可抗力因素，活动主办方拥有取消本次活动的权利；
+		活动主办方不对因网络传输原因而导致参加者提交的信息
+		错误或延误承担任何责任；<br/>
+		主办方会严格监控抽奖活动后台，若发现有违反活动规定
+		的选手，主办方有权在不事先通知的前提下取消其参赛资
+		格；<br/>
+		获奖者须确保其提供的个人信息准确无误，因获奖者提供
+		的个人信息不正确或不准确而导致获奖通知及奖品无法送
+		达，视为放弃获胜资格，竞赛主办方不承担责任；<br/>
+		为保证竞赛的公平、公开和公正性，UC优视组织本次活动
+		的相关员工及其他内部工作人员，以及其家属不得参与本
+		次竞赛。
+	</p>
+</section>
+<script>@@include('../../js/app.min.js')</script>
+<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		new lottery({
+			disc   	  : document.querySelector('#lotteryDisc'),
+			startBtn  : document.querySelector('#lotteryStart'),
+			lotNum    : document.querySelector('#lotNum'),
+			num       : 1, 
+			turns     : 15,
+			duration  : 10,
+			list      : [
+				{'name': '流量包300M'    		, 'state': 'succ'},
+				{'name': '谢谢参与'      		, 'state': 'fail'},
+				{'name': 'UC精美水壶'    		, 'state': 'succ'},
+				{'name': '再抽一次'      		, 'state': 'try' },
+				{'name': 'UC最新版公仔'  		, 'state': 'succ'},
+				{'name': '《后会无期》电影票'   , 'state': 'succ'},
+				{'name': '小米3'                , 'state': 'succ'}
+			],
+			/*
+				中奖控制： rnd 默认本地测试随机数，可以改成自定义function
+				hander: function(doAnimate){
+					var xhr = new XMLHttpRequest();
+					xhr.open('get', '/lottery');
+					xhr.sendRequestHeader('Content-Type', 'text/plain;charset=UTF-8');
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState === 4 && xhr.status === 200){
+							doAnimate(xhr.responseText);
+						};
+					};
+					xhr.send(null);
+				}
+			*/
+			handler : 'rnd'    
+
+		});
+	}, false);
+</script>
+</body>
+</html> 
